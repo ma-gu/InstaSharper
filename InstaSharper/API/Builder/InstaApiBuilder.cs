@@ -36,7 +36,11 @@ namespace InstaSharper.API.Builder
 
             if (_requestMessage == null)
             {
-                _device = AndroidDeviceGenerator.GetRandomAndroidDevice();
+                if (_device == null)
+                {
+                    _device = AndroidDeviceGenerator.GetRandomAndroidDevice();
+                }
+
                 _requestMessage = new ApiRequestMessage
                 {
                     phone_id = _device.PhoneGuid.ToString(),
@@ -140,6 +144,12 @@ namespace InstaSharper.API.Builder
         public IInstaApiBuilder SetRequestDelay(IRequestDelay delay)
         {
             _delay = delay;
+            return this;
+        }
+
+        public IInstaApiBuilder UseDevice(AndroidDevice device)
+        {
+            _device = device;
             return this;
         }
 

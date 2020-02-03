@@ -56,5 +56,7 @@ namespace InstaSharper.API.Builder
         /// <param name="delay">Timespan delay</param>
         /// <returns>API Builder</returns>
         IInstaApiBuilder SetRequestDelay(IRequestDelay delay);
+
+        IInstaApiBuilder UseDevice(AndroidDevice device);
     }
 }
